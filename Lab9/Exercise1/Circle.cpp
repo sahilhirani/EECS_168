@@ -1,0 +1,31 @@
+#include "Circle.h"
+
+void Circle::setRadius(double r)
+{
+  m_radius = r;
+}
+
+double Circle::getRadius()
+{
+  return(m_radius);
+}
+
+double Circle::diameter()
+{
+  double d = 0;
+  d = m_radius * 2;
+  return(d);
+}
+
+double Circle::area()
+{
+  double a = 3.141592 * m_radius * m_radius;
+  return(a);
+}
+
+double Circle::circumference()
+{
+  double ans = 0;
+  ans = 3.141592 * (m_radius * 2);
+  return(ans);
+}

@@ -1,0 +1,138 @@
+/* 
+File Name: BananaStand
+Author: Sahil Hirani
+KUID: 2831316
+Email Address: s679h568@ku.edu
+Homework Assignment Number: 1
+Description: This program is created to take orders for bananas fromt he user 
+and calculate the cost based on the specifics of the order.
+Last Changed: 02/18/2016
+*/
+#include <iostream>
+#include <string>
+#include <stdio.h>
+
+int main()
+{
+	int bananas; //Calculate how many bananas there are
+	char type = '\0'; //Initialized to null character, this is to determine the type of banana
+	char color = '\0'; //Initialized to null character, this is to determine the color of banana
+	const double COST_PER_BANANA = 0.03;
+	double total_cost_banana;//Cost of just bananas before markups and discounts
+	const double ORGANIC_MARKUP_PERCENTAGE = 0.20;
+	const double GAMMA_RAY_MARKUP_PERCENTAGE = 0.50;
+	const double GREEN_DISCOUNT_PERCENTAGE = 0.10;
+	const double MIXED_DISCOUNT_PERCENTAGE = 0.05;
+	double total_markups;//Only Markups
+	double total_cost;//total cost of everything
+	double total_discount;//Only discounts
+	int zipCode;
+	const double OUT_OF_STATE_SHIPPING = 35.50;
+	std::string city;
+	std::string state;
+	std::string streetAddress;
+	std::cout.setf(std::ios::fixed);//To put into financial format
+	std::cout.setf(std::ios::showpoint);
+	std::cout.precision(2);	
+	std::cout <<"Welcome to the Banana Stand!\n";
+	std::cout <<"--------------------\n";
+	std::cout <<"Select type of banana: \n";
+	std::cout <<"Regular (r/R) (no markup)\n";
+	std::cout <<"Organic (o/O) (20"<<"%"<<" markup)\n";
+	std::cout <<"Saturated with Gamma Rays (g/G) (50"<<"%"<<" markup)\n";
+	std::cout <<"Input your choice: ";
+	std::cin >> type;
+	std::cout <<"--------------------\n";
+	std::cout <<"Select color of banana: \n";
+	std::cout <<"Yellow (y/Y) (no discount)\n";
+	std::cout <<"Green (g/G) (10"<<"%"<<" discount)\n";
+	std::cout <<"Mixed (m/M) (5"<<"%"<<" discount)\n";
+	std::cout <<"Input your choice: ";
+	std::cin >> color;
+	std::cout <<"--------------------\n";
+	std::cout <<"How many bananas do you want?: ";
+	std::cin >> bananas;
+	total_cost_banana = COST_PER_BANANA * bananas;
+	std::cin.ignore(1, '\n');
+	std::cout <<"--------------------\n";
+	std::cout <<"Input your street address: ";
+	std::getline (std::cin,streetAddress);
+	std::cout <<"Input your city: ";
+	std::getline (std::cin,city);
+	std::cout <<"Input your state: ";
+	std::getline (std::cin,state);
+	std::cout <<"Input your zipcode: ";
+	std::cin >> zipCode;
+	std::cout <<"--------------------\n";
+	std::cout <<"Total cost for " << bananas <<" banana(s) before markups or discounts: $" << total_cost_banana << std::endl;
+	if(type == 'r')
+	{
+		total_markups = 0.00;
+	}//if statements to calculate how much to markup
+	else if(type == 'R')
+	{
+		total_markups = 0.00;
+	}
+	else if(type == 'o')
+	{
+		total_markups = ORGANIC_MARKUP_PERCENTAGE * total_cost_banana;
+	}
+	else if(type == 'O')
+	{
+		total_markups = ORGANIC_MARKUP_PERCENTAGE * total_cost_banana;
+	}
+	else if(type == 'g')
+	{
+		total_markups = GAMMA_RAY_MARKUP_PERCENTAGE * total_cost_banana;
+	}
+	else if(type == 'G')
+	{
+		total_markups = GAMMA_RAY_MARKUP_PERCENTAGE * total_cost_banana;
+	}
+	else
+	{
+		std::cout <<"ERROR! NOT A CHOICE\n";
+	}//ERROR if anything else is written down will show up at the end
+	if(state != "KS"||"Ks"||"ks"||"Kansas"||"kS")
+	{
+		total_markups= total_markups + OUT_OF_STATE_SHIPPING;
+	}//Adding Shipping costs to markups
+	std::cout <<"Total Markups: $" << total_markups <<"\n";
+	if(color == 'y')
+	{
+		total_discount = 0.00;
+	}//if statements to calculate total discount
+	else if(color == 'Y')
+	{
+		total_discount = 0.00;
+	}
+	else if(color == 'g')
+	{
+		total_discount = GREEN_DISCOUNT_PERCENTAGE * total_cost_banana;
+	}
+	else if(color == 'G')
+	{
+		total_discount = GREEN_DISCOUNT_PERCENTAGE * total_cost_banana;
+	}
+	else if(color == 'm')
+	{
+		total_discount = MIXED_DISCOUNT_PERCENTAGE * total_cost_banana;
+	}
+	else if(color == 'M')
+	{
+		total_discount = MIXED_DISCOUNT_PERCENTAGE * total_cost_banana;
+	}
+	else
+	{
+		std::cout <<"ERROR! NOT A CHOICE\n"; //If User types anything else in it will provide an error
+	}//ERROR if anything else is written down will show up at the end
+	std::cout <<"Total discount: $" << total_discount << std::endl;
+	total_cost = (total_cost_banana + total_markups) - total_discount;//Last bit of math
+	std::cout <<"Total Cost: $" << total_cost << std::endl;
+	std::cout <<"Shipping to:\n";
+	std::cout <<"\t" << streetAddress <<"\n";
+	std::cout <<"\t" << city<<", "<< state <<"\n";
+	std::cout <<"\t"<< zipCode <<"\n";
+	return(0);
+}
+	

@@ -1,0 +1,7 @@
+SummationOfFives: main.o
+	g++ main.o -o SummationOfFives
+main.o: main.cpp
+	g++ -c main.cpp
+clean:
+	rm main.o SummationOfFives
+	

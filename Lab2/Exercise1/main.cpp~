@@ -1,0 +1,21 @@
+/* -----------------------------------------------------------------------------
+ *
+ * File Name: main.cpp
+ * Author: Sahil Hirani s679h568@ku.edu
+ * Assignment:   EECS-168 Lab 2
+ * Description:  This program will compute the area of a triangle with hard coded values.
+ * Date: 2/3/2016
+ *
+ ---------------------------------------------------------------------------- */
+#include <iostream>
+
+int main()
+{
+	double base = 5.5;
+	double height = 20.7;
+	double area = 0.5 * base * height;
+	//std::cout <<"Triangle's Base: " << base << "\n" ;
+	std::cout <<"Triangle's Height: " << height << "\n";
+	std::cout <<"Triangle's Area: " << area << "\n";
+return(0);
+}

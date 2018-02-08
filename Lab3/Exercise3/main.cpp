@@ -1,0 +1,24 @@
+#include <iostream>
+
+int main()
+{
+	int num = 0;
+	int mult = 0;
+	std::cout <<"What number do you wish to see multiples of? ";
+	std::cin >> num;
+	std::cout <<"How many multiples? ";
+	std::cin >> mult;
+	if(mult>0)
+	{
+		for(int lcv=1;lcv<=mult;lcv++)
+		{
+			std::cout <<num*lcv << std::endl;
+		}
+	}
+	else
+	{
+		std::cout <<"Invalid Input." << std::endl;
+	}
+return(0);
+}
+
